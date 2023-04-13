@@ -1,0 +1,29 @@
+swagger: '2.0'
+info:
+  title: DMV ELP Classification API Config
+  description: DMV ELP Classification API on Cloud Endpoints with a Google Cloud Functions backend
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /elp_validation:
+    post:
+      summary: ELP Validation with various functionalities.
+      operationId: elp-validation
+      x-google-backend:
+        address: https://dmv-elp-validation-dmxgg7lnsa-uw.a.run.app
+      security:
+      - api_key_header: []
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: object
+securityDefinitions:
+# This section configures basic authentication with api_key
+  api_key_header:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
